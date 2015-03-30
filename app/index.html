@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<!-- define angular app -->
+<html>
+
+<head>
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css" />
+  <!-- endbower -->
+  <!-- nonbower css-->
+
+  <!--nonbower endbuild -->
+  <!-- endbuild -->
+  <!-- build:css({.tmp,app}) styles/main.css -->
+  <link rel="stylesheet" href="styles/app.css">
+  <!-- endbuild -->
+</head>
+
+<body ng-app="mainApp">
+  <div class="wrapper">
+    <nav class="navbar-app">
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="col-sm-8 col-sm-offset-2 ng-scope">
+            <div class="logo-banner pull-left"></div>
+            <div class="user-detail pull-right">
+              Hello <span ng-if="!user.isLoggedIn"><strong>Guest</strong></span>
+              <span ng-if="user.isLoggedIn"><strong>{{user.username}}</strong></span>
+              <div ng-if="user.isLoggedIn" class="text-right">
+                <a class="logout-text" ng-click="logout()"><i><u>Logout</u></i></a>
+              </div>
+              <div ng-if="!user.isLoggedIn" class="text-right">
+                <a class="login-text" ng-href="#/login"><i><u>Login</u></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <!-- angular templating -->
+        <!-- this is where content will be injected -->
+        <div ng-view></div>
+        <div class="view-loader" ng-show="loadingView">
+          Loading ...
+        </div>
+      </div>
+    </div>
+    <div class="push"></div>
+  </div>
+  <!--<div id="footer">
+    <p class="footer-text text-right"><small>Powered by</small>  <span class="pro">ProKarma &nbsp;</span>
+    </p>
+
+  </div>-->
+
+  <div ng-include src="'modules/common/footer.html'"></div>
+
+  <!-- build:js scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/ngstorage/ngStorage.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <script src="app.js"></script>
+  <script src="routes.js"></script>
+  <script src="modules/config/config-constant.js"></script>
+  <script src="modules/login/login-controller.js"></script>
+  <script src="modules/recharge/confirm/confirm-controller.js"></script>
+  <script src="modules/recharge/home/home-controller.js"></script>
+  <script src="modules/recharge/preview/preview-controller.js"></script>
+  <script src="modules/recharge/recharge.js"></script>
+  <script src="modules/recharge/recharge-service.js"></script>
+  <script src="modules/common/common-directive.js"></script>
+  <script src="modules/common/common-filter.js"></script>
+  <script src="modules/common/common.js"></script>
+  <script src="modules/login/login-service.js"></script>
+
+  <!-- endbuild -->
+
+</body>
+
+</html>

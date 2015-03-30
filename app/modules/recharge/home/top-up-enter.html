@@ -1,0 +1,171 @@
+<div class="col-sm-8 col-sm-offset-2 page-content">
+  <div class="content-header-bar">
+    <h3 class="text-center">TOP UP YOUR FOOD CARD</h3>
+  </div>
+
+  <form class="form-horizontal form-topup-detail" name="formTopupDetail">
+    <h4 class="bold text-info">Top up details</h4>
+    <hr>
+    <div class="form-group">
+      <label for="mobile-number" class="control-label col-sm-4">Food card number:<span class="required"> * </span>
+      </label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="mobile-number" maxlength="10" numbers-only required ng-model="topUpDetail.mobileNumber" ng-class="showError">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="topup-amount" class="control-label col-sm-4">I want to top up by:</label>
+      <div class="col-sm-4">
+        <select class="form-control" id="topup-amount" ng-model="topUpDetail.amount" ng-options="item.value as item.label for item in topUpAmount">
+
+        </select>
+        <span class="help-block"></span>
+      </div>
+    </div>
+
+    <h4 class="bold text-info">Payment details</h4>
+    <hr>
+    <div class="form-group">
+      <label for="card-type" class="control-label col-sm-4">Card type: <span class="required"> * </span>
+      </label>
+      <div class="col-sm-4">
+        <select class="form-control" id="card-type" ng-model="topUpDetail.cardType" required ng-class="showError">
+          <option style="display:none" value="">-select-</option>
+          <option value="Credit Card">Credit</option>
+          <option value="Debit Card">Debit</option>
+
+        </select>
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="card-number" class="control-label col-sm-4">Card number:<span class="required"> * </span>
+      </label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" name="cardNumber" id="card-number" ng-minlength="15" ng-maxlength="15" maxlength="15" numbers-only required ng-model="topUpDetail.cardNumber" ng-class="showError">
+        <span class="help-block error-msg" ng-show="formTopupDetail.cardNumber.$error.minlength">Card number should be of 15 digits</span>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label for="card-expiry" class="control-label col-sm-4">Expiry date:<span class="required"> * </span>
+      </label>
+      <div class="col-sm-4">
+        <div class="width-50 pull-left">
+          <select class="inline form-control" id="card-expiry-month" ng-model="topUpDetail.cardExpiryMonth" ng-init="topUpDetail.cardExpiryMonth='01'">
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+        </div>
+        <div class="width-50 pull-left">
+          <select class="inline form-control" id="card-expiry-year" ng-model="topUpDetail.cardExpiryYear" ng-init="topUpDetail.cardExpiryYear='2014'">
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label for="card-security-key" class="control-label col-sm-4">Security code:<span class="required"> * </span>
+      </label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="card-security-key" maxlength="4" numbers-only required ng-model="topUpDetail.cardSecuritykey" ng-class="showError">
+
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="card-first-name" class="control-label col-sm-4">First name on card:<span class="required"> * </span>
+      </label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="card-first-name" maxlength="20" required ng-model="topUpDetail.cardFirstName" ng-class="showError">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="card-last-name" class="control-label col-sm-4">Last name on card:<span class="required"> * </span>
+      </label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="card-last-name" maxlength="20" required ng-model="topUpDetail.cardLastname" ng-class="showError">
+      </div>
+    </div>
+    <div ng-if="!user.isLoggedIn" class="logged-in-content">
+      <div class="form-group">
+        <label for="address1" class="control-label col-sm-4">Address 1:<span class="required"> * </span>
+        </label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="address1" maxlength="30" required ng-model="topUpDetail.address1" ng-class="showError">
+
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label for="address2" class="control-label col-sm-4">Address 2:</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="address2" maxlength="30" ng-model="topUpDetail.address2">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="city" class="control-label col-sm-4">Town /City:<span class="required"> * </span>
+        </label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="city" maxlength="30" required ng-model="topUpDetail.city" ng-class="showError">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="region" class="control-label col-sm-4">County /Region:<span class="required"> * </span>
+        </label>
+        <div class="col-sm-4">
+          <select id="region" class="form-control" ng-model="topUpDetail.region" required ng-class="showError">
+            <option style="display:none" value="">-select-</option>
+            <option value="Alabama">Alabama</option>
+            <option value="Alaska">Alaska</option>
+            <option value="California">California</option>
+            <option value="Florida">Florida</option>
+            <option value="Ohio">Ohio</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="country" class="control-label col-sm-4">Country:<span class="required"> * </span>
+        </label>
+        <div class="col-sm-4">
+          <select id="country" class="form-control" ng-model="topUpDetail.country" ng-options="item.value as item.label for item in countryList" ng-class="showError">
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-4 col-sm-4 text-center">
+        <button type="button" class="btn btn-primary topUpPreview" ng-click="topUpPreview(topUpDetail)">
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

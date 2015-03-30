@@ -1,0 +1,18 @@
+{
+	"countryList": [
+		{
+			"label": "UNITED STATES",
+			"value": "US"
+		}, {
+			"label": "INDIA",
+			"value": "IND"
+		}, {
+			"label": "AUSTRALIA",
+			"value": "DZ"
+		}, {
+			"label": "BRAZIL",
+			"value": "BR"
+		}
+	]
+}
+
